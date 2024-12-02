@@ -3,4 +3,12 @@ name = "advent-rust"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "advent_rust"
+path = "src/lib.rs"
+
+[[bin]]
+name = "advent-rust"
+path = "src/main.rs"
+
 [dependencies]
