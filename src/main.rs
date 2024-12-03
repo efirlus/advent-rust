@@ -1,14 +1,9 @@
 use std::fs;
-use advent_rust::붉은_코_보고서;
+use advent_rust::심사숙곱;
 
 fn main() {
-    let sample = "7 6 4 2 1
-1 2 7 8 9
-9 7 6 2 1
-1 3 2 4 5
-8 6 4 4 1
-1 3 6 7 9";
-    println!("{}", 붉은_코_보고서::문제없음_처리장치(파일읽기(2)));
+    let 예문 = "xmul(2,4)&do()mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
+    println!("{}", 심사숙곱::심사숙재곱(&파일읽기(3)));
 }
 
 fn 파일읽기(날짜:i32) -> String {
@@ -22,3 +17,4 @@ fn 파일읽기(날짜:i32) -> String {
     
     return 내용;
 }
+
