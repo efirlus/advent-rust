@@ -6,3 +6,6 @@ pub mod 붉은_코_보고서;
 
 #[path = "day03.rs"]
 pub mod 심사숙곱;
+
+#[path = "day04.rs"]
+pub mod 케레스_수색;

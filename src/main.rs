@@ -1,9 +1,18 @@
 use std::fs;
-use advent_rust::심사숙곱;
+use advent_rust::케레스_수색;
 
 fn main() {
-    let 예문 = "xmul(2,4)&do()mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
-    println!("{}", 심사숙곱::심사숙재곱(&파일읽기(3)));
+    let 예문 = "MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX";
+    케레스_수색::저런_x_mas였다네요(&파일읽기(4));
 }
 
 fn 파일읽기(날짜:i32) -> String {
