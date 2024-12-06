@@ -1,18 +1,36 @@
 use std::fs;
-use advent_rust::케레스_수색;
+use advent_rust::프린터_대기열;
 
 fn main() {
-    let 예문 = "MMMSXXMASM
-MSAMXMSMSA
-AMXSXMAAMM
-MSAMASMSMX
-XMASAMXAMM
-XXAMMXXAMA
-SMSMSASXSS
-SAXAMASAAA
-MAMMMXMMMM
-MXMXAXMASX";
-    케레스_수색::저런_x_mas였다네요(&파일읽기(4));
+    let 예문 = "47|53
+97|13
+97|61
+97|47
+75|29
+61|13
+75|53
+29|13
+97|29
+53|29
+61|53
+97|53
+61|29
+47|13
+75|47
+97|75
+47|61
+75|61
+47|29
+75|13
+53|13
+
+75,47,61,53,29
+97,61,53,29,13
+75,29,13
+75,97,47,61,53
+61,13,29
+97,13,75,29,47";
+    println!("{}", 프린터_대기열::프린터_대기열(&파일읽기(5)));
 }
 
 fn 파일읽기(날짜:i32) -> String {

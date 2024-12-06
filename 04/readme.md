@@ -87,3 +87,51 @@ S.S.S.S.SS
 3. 사실 `iter().filter()`는 `for`의 간략화 판이나 마찬가지라, 결국 한 바퀴를 다 돈다는 걸 발견함
 디버그 창을 쳐다보니까 처음부터 끝까지를 다 돌더라..
 
+
+
+
+### 추가
+ai한테 강의 많이  들었음
+이따 정리해야지
+
+1. `#[derive(Debug, Clone)]` 태그에 대해
+스트럭트를 **깊이** 파고 들어갈 필요가 있을 땐 이걸 허용해줘야 한다고 함
+print, clone처럼, 안에 든 필드를 꺼낼 땐 문제가 없고, 통으로 쓸 때만 문제라고 함
+
+2. vec.clone.iter 보다 좋은 방법
+==>> let vec2: Vec<_> = vec1.iter().enumerate().filter().collect()
+
+3. enumerate는 golang의 for문임, 특히 for i, v := range array 느낌. 즉, 각 iterator 엘레멘츠의 인덱스를 같이 발부해줌
+단, enumerate의 v는 레퍼런스에 불과하고, 사용 불가함
+
+4. 그럴 때 등장하는게 .iter_mut 이지만 안써도 될듯?
+
+5. map은 go의 데이터타입 맵이랑은 아예 다른거임. 일종의 for each function에 가까움
+iter에서 온 각 엘레멘츠를 변형시키거나 처리해야 할 때 씀
+그렇게 처리해서 .collect로 모으는 것
+
+6. 아마 자주 쓸거같은 .fold 는 각 항을 누적시키는 거임, 이게 맞는진 테스트 해봐야지
+
+7. for 중첩에 해당하는 방식은 더블 필터로 처리 가능함
+```rust
+vec.iter()
+    .filter(|x| x == 1)
+    .filter(|x| {
+        let second_condition = v 
+            .any(conditions);
+
+        if second_condition {
+            let third_c = v.any();
+
+            if third_c {
+                ....
+            } else {
+                false;
+            }
+        } else {
+            false
+        }
+    })
+    .map(적절한 타입으로 가공)
+    .collect();
+```
