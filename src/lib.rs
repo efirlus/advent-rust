@@ -12,3 +12,7 @@ pub mod 케레스_수색;
 
 #[path = "day05.rs"]
 pub mod 프린터_대기열;
+
+#[path = "day06.rs"]
+pub mod 경비_피하기_경기;
+

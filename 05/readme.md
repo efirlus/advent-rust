@@ -240,3 +240,60 @@ fn 재정렬을_해볼까<'a>(mut 문서:Vec<&'a str>, 딱_맞는_규칙:Vec<Vec
 ```
 주요 변경점이라면, push 파트를 아예 제거해버리고, 규칙이 맞을 때 마다 하나씩 차감해서 0일 때 outer 탈출시킨 것 정도
 그 외엔 뭐가 바뀐지 모르겠는데 하여튼 승리했다 ㅋㅋㅋ
+
+
+
+## 추가
+
+ai가 준 대안
+
+```rust
+
+pub fn process_print_queue(input: &str) -> i32 {
+    input.lines()
+        .fold((Vec::new(), Vec::new(), 0), |(mut rules, mut docs, score), line| {
+            match line {
+                line if line.contains("|") => {
+                    rules.push(line.split("|").collect::<Vec<_>>());
+                    (rules, docs, score)
+                },
+                line if line.contains(",") => {
+                    let document = line.split(",").collect::<Vec<_>>();
+                    let new_score = process_document(&document, &rules);
+                    (rules, docs, score + new_score)
+                },
+                _ => (rules, docs, score)
+            }
+        }).2  // Return final score
+}
+
+pub fn process_print_queue(input: &str) -> i32 {
+    input.lines()
+        .filter(|line| line.contains("|") || line.contains(","))
+        .fold(
+            (Vec::new(), 0), // (rules, total_score)
+            |(mut rules, mut score), line| {
+                if line.contains("|") {
+                    rules.push(line.split("|").collect::<Vec<_>>());
+                    (rules, score)
+                } else {
+                    let document: Vec<_> = line.split(",").collect();
+                    let violated_count = rules.iter()
+                        .filter(|rule| {
+                            rule.iter().all(|page| document.contains(page)) &&
+                            document.iter().position(|p| p == &rule[0]) >
+                            document.iter().position(|p| p == &rule[1])
+                        })
+                        .count();
+                    
+                    (rules, score + if violated_count > 0 { 1 } else { 0 })
+                }
+            }
+        )
+        .1  // Get the score from the tuple
+}
+```
+
+둘다 틀린 답이 나오지만 몇가지 배울 점이 있음
+fold 안에 스코프를 열고 match, push 적용 하는 법
+`.fold(먼저 출력형을 선언 |출력형의 변수명 지정| {수식})` 이라는 기본 구조를 배울 수 있었음
