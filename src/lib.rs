@@ -16,3 +16,6 @@ pub mod 프린터_대기열;
 #[path = "day06.rs"]
 pub mod 경비_피하기_경기;
 
+#[path = "day07.rs"]
+pub mod 수리수리_다리_수리;
+

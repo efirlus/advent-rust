@@ -23,11 +23,11 @@ fn main() {
     let rs_path = format!("src/day{}.rs", day_padded);
     if !Path::new(&rs_path).exists() {
         let mut file = File::create(&rs_path).unwrap();
-        write!(file, r###"pub fn part1(input: &str) -> String {{
+        write!(file, r###"pub fn part1(입력: &str) -> i32 {{
     todo!("Implement part 1")
 }}
 
-pub fn part2(input: &str) -> String {{
+pub fn part2(입력: &str) -> i32 {{
     todo!("Implement part 2")
 }}
 
@@ -35,17 +35,17 @@ pub fn part2(input: &str) -> String {{
 mod tests {{
     use super::*;
 
-    const EXAMPLE: &str = r#"
+    const 예문: &str = r#"
 "#;
 
     #[test]
     fn test_part1() {{
-        assert_eq!(part1(EXAMPLE.trim()), "");
+        assert_eq!(part1(예문.trim()), 0);
     }}
 
     #[test]
     fn test_part2() {{
-        assert_eq!(part2(EXAMPLE.trim()), "");
+        assert_eq!(part2(예문.trim()), 0);
     }}
 }}"###).unwrap();
     }
