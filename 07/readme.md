@@ -467,3 +467,49 @@ let 진법화_대상:경우의_수_변환기 = 경우의_수_변환기{가짓수
 진법화 = format!("{:0>너비$}", 진법화_대상.삼진법(), 너비 = 수식.1.len() - 1);
 ```
 method를 만든다는 아이디어는 좋았지만, 깨끗하진 않았다 정도로...
+
+
+
+## 추가
+```rust
+// Define a trait for ternary conversion
+pub trait ToTernary {
+    fn ternary(&self) -> String;
+}
+
+// Implement for i32
+impl ToTernary for i32 {
+    fn ternary(&self) -> String {
+        if *self == 0 {
+            return "0".to_string();
+        }
+        
+        let mut num = *self;
+        let mut result = String::new();
+        
+        while num > 0 {
+            result.insert(0, char::from_digit((num % 3) as u32, 10).unwrap());
+            num /= 3;
+        }
+        
+        result
+    }
+}
+
+// Usage example:
+fn main() {
+    let number = 42;
+    println!("{} in ternary: {}", number, number.ternary());  // Will print: 42 in ternary: 1120
+    
+    // You can use it directly in expressions
+    let ternary_string = 15.ternary();  // Will return: "120"
+}
+```
+
+1.
+trait라는 걸 ai가 알려줬다. 자주 써먹게 될 거 같다
+
+2.
+`char::from_digit( 들어갈 숫자 , 자릿수 ).unwrap(에러핸들링);`
+숫자가 char로 변한다고 한다
+insert랑 엮어서 while을 돌리는게 핵심

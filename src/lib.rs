@@ -19,3 +19,6 @@ pub mod 경비_피하기_경기;
 #[path = "day07.rs"]
 pub mod 수리수리_다리_수리;
 
+#[path = "day08.rs"]
+pub mod 선형_공명점;
+
